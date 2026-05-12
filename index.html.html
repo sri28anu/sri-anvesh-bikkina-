@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Anvesh Bikkina — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Syne:wght@400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--bg:#0c0b09;--paper:#f2ede4;--cream:#f8f4ed;--gold:#c9a84c;--rust:#b85c38;--ink:#1a1714;--muted:#6b6560;--white:#faf8f3}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem 3rem 5rem;position:relative;overflow:hidden}
+.orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.1),transparent 70%);top:-150px;right:-150px;pointer-events:none}
+.orb2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.08),transparent 70%);bottom:50px;left:50px;pointer-events:none}
+.nav{position:absolute;top:2.5rem;left:3rem;right:3rem;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);letter-spacing:.05em}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.hero-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(4rem,11vw,9.5rem);font-weight:900;line-height:.92;letter-spacing:-.03em}
+.hero-name .outline{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.2);font-style:italic;padding-left:6vw;margin-top:.1em}
+.hero-sub{margin-top:2.5rem;font-size:16px;color:rgba(255,255,255,.4);line-height:1.8;max-width:500px;font-weight:400}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2rem}
+.chip{padding:5px 14px;border:1px solid rgba(201,168,76,.25);color:rgba(201,168,76,.8);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;font-family:'Space Mono',monospace}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:2.5rem}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;font-size:13px;font-weight:600;text-decoration:none;border-radius:3px;transition:all .2s;letter-spacing:.02em}
+.btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:#d4b055;transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.55)}.btn-ghost:hover{border-color:rgba(255,255,255,.35);color:#fff}
+
+/* MARQUEE */
+.marquee{background:var(--gold);padding:13px 0;overflow:hidden;white-space:nowrap}
+.mtrack{display:inline-flex;animation:mq 25s linear infinite}
+.mi{display:inline-flex;align-items:center;gap:16px;padding:0 18px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink)}
+.md{color:var(--rust);font-size:14px}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.sec{padding:6rem 4rem}.sec-inner{max-width:1080px;margin:0 auto}
+.lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;display:flex;align-items:center;gap:14px}
+.lbl::after{content:'';width:50px;height:1px;background:rgba(255,255,255,.1)}
+.lbl-dk{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--rust);margin-bottom:3rem;display:flex;align-items:center;gap:14px}
+.lbl-dk::after{content:'';width:50px;height:1px;background:rgba(0,0,0,.12)}
+
+/* ABOUT */
+.about-sec{background:var(--cream);color:var(--ink)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:start}
+.about-h{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.8rem}
+.about-h em{font-style:italic;color:var(--rust)}
+.about-p{font-size:15px;color:#4a4540;line-height:1.85;margin-bottom:1.1rem}
+.about-photo{width:100%;border-radius:4px;object-fit:cover;aspect-ratio:3/4;filter:grayscale(15%);border:1px solid #d8d2c8;display:block}
+.photo-cap{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;margin-top:10px;text-align:center}
+
+/* WHO CARDS */
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);margin-top:4rem;border-radius:4px;overflow:hidden}
+.wc{background:#111009;padding:2rem 1.8rem;transition:background .25s;position:relative;overflow:hidden}
+.wc:hover{background:#181610}
+.wc::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s}
+.wc:hover::after{width:100%}
+.wi{font-size:1.8rem;margin-bottom:12px;display:block}
+.wt{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.wb{font-size:13px;color:rgba(255,255,255,.4);line-height:1.75}
+.wb strong{color:var(--gold);font-weight:500}
+
+/* JOURNEY */
+.journey-sec{background:var(--paper);color:var(--ink)}
+.journey-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:4rem;max-width:560px}
+.journey-h em{font-style:italic;color:var(--rust)}
+.timeline{position:relative}
+.timeline::before{content:'';position:absolute;left:120px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,#c5bfb4 20%,#c5bfb4 80%,transparent)}
+.ti{display:grid;grid-template-columns:120px 1fr;gap:2.5rem;padding:2.2rem 0;border-bottom:1px solid rgba(0,0,0,.07)}
+.ty{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-align:right;padding-right:2.5rem;padding-top:5px;position:relative;line-height:1.6}
+.ty::after{content:'';position:absolute;right:-5px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--rust);border:2px solid var(--paper);box-shadow:0 0 0 1px var(--rust)}
+.tr{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:2px}
+.to{font-size:12px;color:var(--rust);font-weight:600;margin-bottom:10px;letter-spacing:.02em}
+.td{font-size:13.5px;color:#4a4540;line-height:1.75}
+.td strong{color:var(--ink);font-weight:600}
+
+/* AWARDS */
+.awards-sec{background:var(--bg)}
+.awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ac{background:#111009;border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;transition:transform .25s,border-color .25s}
+.ac:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.3)}
+.ai{width:100%;overflow:hidden;background:#0a0a08;display:flex;align-items:center;justify-content:center}
+.ai img{width:100%;height:200px;object-fit:cover;object-position:center top;transition:transform .4s;display:block}
+.ac:hover .ai img{transform:scale(1.03)}
+.ab{padding:1.2rem 1.3rem}
+.an{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;line-height:1.3}
+.ao{font-family:'Space Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.08em}
+.ad{font-size:11px;color:rgba(255,255,255,.25);margin-top:4px;font-family:'Space Mono',monospace}
+.atc{background:#111009;border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:1.8rem;transition:transform .25s,border-color .25s;min-height:160px}
+.atc:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.3)}
+.ati{font-size:2rem;margin-bottom:12px}
+.atn{font-size:14px;font-weight:600;color:var(--white);line-height:1.35;margin-bottom:6px}
+.ato{font-family:'Space Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.07em}
+
+/* CERTS */
+.certs-sec{background:var(--ink);padding:5rem 4rem}
+.certs-inner{max-width:1080px;margin:0 auto}
+.certs-flex{display:flex;flex-wrap:wrap;gap:12px}
+.cp{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid rgba(201,168,76,.2);border-radius:4px;background:rgba(201,168,76,.04);transition:all .22s}
+.cp:hover{border-color:var(--gold);background:rgba(201,168,76,.1);transform:translateY(-2px)}
+.cpi{font-size:1.3rem}
+.cpn{font-size:13px;font-weight:600;color:var(--white);display:block}
+.cpo{font-family:'Space Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.07em}
+
+/* HIGHLIGHT */
+.hl{background:var(--rust);padding:5rem 4rem;text-align:center}
+.hl-inner{max-width:720px;margin:0 auto}
+.hl-lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1.5rem}
+.hl-q{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:400;font-style:italic;color:#fff;line-height:1.5;margin-bottom:1.5rem}
+.hl-attr{font-size:13px;color:rgba(255,255,255,.6)}
+.hl-badge{display:inline-flex;align-items:center;gap:10px;margin-top:2rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:4px;padding:12px 24px;color:#fff;font-size:13px;font-weight:600}
+
+/* CONNECT */
+.conn{background:var(--bg);padding:8rem 4rem;text-align:center;position:relative;overflow:hidden}
+.conn::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(201,168,76,.05),transparent);pointer-events:none}
+.conn-inner{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.conn-lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.conn-h{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5rem);font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:1.2rem}
+.conn-h em{display:block;font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.2)}
+.conn-sub{font-size:15px;color:rgba(255,255,255,.38);line-height:1.8;margin-bottom:2.5rem}
+.conn-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center}
+footer p{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.15)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:768px){
+  .hero{padding:5rem 1.5rem 3.5rem}
+  .nav{top:1.5rem;left:1.5rem;right:1.5rem}
+  .nav-links{display:none}
+  .sec{padding:4rem 1.5rem}
+  .about-grid{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .awards-grid{grid-template-columns:1fr 1fr}
+  .timeline::before{left:70px}
+  .ti{grid-template-columns:70px 1fr;gap:1.5rem}
+  .certs-sec,.hl,.conn{padding:3.5rem 1.5rem}
+  footer{flex-direction:column;gap:6px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="orb1"></div><div class="orb2"></div>
+  <nav class="nav">
+    <span class="nav-logo">S · A · B</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+  <div style="position:relative;z-index:1">
+    <p class="hero-tag">Technical Business Development · Cybersecurity · London, UK</p>
+    <h1 class="hero-name">Sri Anvesh<span class="outline">Bikkina</span></h1>
+    <p class="hero-sub">MBA with Commendation · B.Tech Computer Science · Zscaler ZIA & ZPA Certified · Enactus Mentor · Someone who shows up when it counts.</p>
+    <div class="chips">
+      <span class="chip">MBA · Data Analytics</span>
+      <span class="chip">Zscaler ZIA & ZPA</span>
+      <span class="chip">Zero Trust · ZTCA</span>
+      <span class="chip">B2B Business Development</span>
+      <span class="chip">Enactus Mentor</span>
+      <span class="chip">Go Herts Gold</span>
+    </div>
+    <div class="hero-cta">
+      <a href="mailto:anubikkina@gmail.com" class="btn btn-gold">📩 Get in touch</a>
+      <a href="https://www.linkedin.com/in/sri-anvesh-bikkina-93b766151" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="mtrack">
+  <span class="mi">MBA with Commendation <span class="md">◆</span></span>
+  <span class="mi">Zscaler ZIA Administrator <span class="md">◆</span></span>
+  <span class="mi">Zscaler ZPA Administrator <span class="md">◆</span></span>
+  <span class="mi">HBS Excellence Award ×2 <span class="md">◆</span></span>
+  <span class="mi">Dean's Rising Star 2024 <span class="md">◆</span></span>
+  <span class="mi">Gold Go Herts Award <span class="md">◆</span></span>
+  <span class="mi">Top 10% · Strategic Marketing <span class="md">◆</span></span>
+  <span class="mi">Enactus Coaching4Impact <span class="md">◆</span></span>
+  <span class="mi">Cybersecurity Expo 2025 <span class="md">◆</span></span>
+  <span class="mi">Student Representative 2024 <span class="md">◆</span></span>
+  <span class="mi">MBA with Commendation <span class="md">◆</span></span>
+  <span class="mi">Zscaler ZIA Administrator <span class="md">◆</span></span>
+  <span class="mi">Zscaler ZPA Administrator <span class="md">◆</span></span>
+  <span class="mi">HBS Excellence Award ×2 <span class="md">◆</span></span>
+  <span class="mi">Dean's Rising Star 2024 <span class="md">◆</span></span>
+  <span class="mi">Gold Go Herts Award <span class="md">◆</span></span>
+  <span class="mi">Top 10% · Strategic Marketing <span class="md">◆</span></span>
+  <span class="mi">Enactus Coaching4Impact <span class="md">◆</span></span>
+  <span class="mi">Cybersecurity Expo 2025 <span class="md">◆</span></span>
+  <span class="mi">Student Representative 2024 <span class="md">◆</span></span>
+</div></div>
+
+<!-- ABOUT -->
+<section class="about-sec sec" id="about">
+  <div class="sec-inner">
+    <p class="lbl-dk">About</p>
+    <div class="about-grid">
+      <div class="reveal">
+        <h2 class="about-h">Commercially sharp.<br><em>Technically credible.</em></h2>
+        <p class="about-p">I'm an MBA graduate with a B.Tech in Computer Science — not because I couldn't decide, but because I always knew the most interesting work happens at the intersection of technology and business.</p>
+        <p class="about-p">During my MBA at the University of Hertfordshire, I placed in the <strong>top 10% of my cohort</strong> in Strategic Marketing Planning & Entrepreneurship, won the <strong>HBS Excellence Award twice</strong>, earned the <strong>Dean's Rising Star Award 2024</strong>, and was recognised with the <strong>Gold Go Herts Award</strong> for employability, enterprise skills and commitment to social responsibility.</p>
+        <p class="about-p">I hold three Zscaler certifications — ZIA Administrator, ZPA Administrator, and Zero Trust Cyber Associate — and have represented cybersecurity products at a UK industry expo. I mentor future business leaders through Enactus UK & Ireland's 7-month Coaching4Impact programme. I use AI tools daily to research, prospect, and communicate with precision.</p>
+        <p class="about-p">I'm based in London, actively building a career in Technical Business Development within cybersecurity — and I bring evidence for everything I say.</p>
+      </div>
+      <div class="reveal">
+        <img src="award_hbs.jpg" alt="Sri Anvesh with HBS Excellence Awards" class="about-photo">
+        <p class="photo-cap">HBS Excellence Award · Summer Senate · May 2024</p>
+      </div>
+    </div>
+    <div class="who-grid">
+      <div class="wc reveal"><span class="wi">🎓</span><div class="wt">Academic Excellence</div><div class="wb">MBA with Commendation · <strong>Top 10%</strong> cohort · HBS Excellence Award ×2 · Dean's Rising Star · Gold Go Herts Award</div></div>
+      <div class="wc reveal"><span class="wi">🛡️</span><div class="wt">Cybersecurity Certified</div><div class="wb"><strong>Zscaler ZIA & ZPA Administrator</strong> certified · ZTCA · Represented cloud security at UK cybersecurity expo 2025</div></div>
+      <div class="wc reveal"><span class="wi">🤝</span><div class="wt">Mentor & Leader</div><div class="wb"><strong>7-month Coaching4Impact</strong> programme · Improved team efficiency by <strong>20%</strong> · MBA Student Representative 2023–24</div></div>
+      <div class="wc reveal"><span class="wi">📈</span><div class="wt">Commercial Track Record</div><div class="wb"><strong>25% stakeholder engagement growth</strong> · <strong>20% revenue uplift</strong> at Globus IT · B2B consultative sales across government & enterprise</div></div>
+      <div class="wc reveal"><span class="wi">🤖</span><div class="wt">AI-Powered Operator</div><div class="wb">Uses <strong>NotebookLM, Perplexity, Happenstance AI</strong> daily — research-led prospecting, market intelligence, personalised outreach at scale</div></div>
+      <div class="wc reveal"><span class="wi">🌍</span><div class="wt">Global Perspective</div><div class="wb">Hyderabad to London · Three languages · Relationships across <strong>government, enterprise, universities & startups</strong> in India and the UK</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey-sec sec" id="journey">
+  <div class="sec-inner">
+    <p class="lbl-dk">The Journey</p>
+    <h2 class="journey-h reveal">Everything I've done,<br><em>with proof.</em></h2>
+    <div class="timeline">
+      <div class="ti reveal">
+        <div class="ty">2024–<br>Present</div>
+        <div>
+          <div class="tr">Alumni Mentor & Coach — Coaching4Impact</div>
+          <div class="to">Enactus UK & Ireland</div>
+          <div class="td">Completed a <strong>7-month structured coaching programme</strong>, mentoring university teams from BPP and Warwick. Improved project efficiency by <strong>20%</strong> and team collaboration by <strong>30%</strong>. Awarded the <strong>Enactus Coaching4Impact Certificate</strong> — recognised for developing the next generation of responsible business leaders.</div>
+        </div>
+      </div>
+      <div class="ti reveal">
+        <div class="ty">2025<br>Voluntary</div>
+        <div>
+          <div class="tr">Cybersecurity Brand Ambassador</div>
+          <div class="to">Securden — UK Cybersecurity Expo</div>
+          <div class="td">Stepped in at short notice to represent <strong>Securden's on-premises privileged access management and cloud security products</strong> at a UK industry expo. Engaged CISOs, IT directors, and enterprise buyers — translating complex security architecture into clear business value, live on the expo floor.</div>
+        </div>
+      </div>
+      <div class="ti reveal">
+        <div class="ty">2024</div>
+        <div>
+          <div class="tr">Business Strategy Internship</div>
+          <div class="to">Bright Network × British Airways (IEUK 2024)</div>
+          <div class="td">Completed <strong>IEUK 2024: Business, Operations & Marketing</strong>. Designed a CSR-aligned partnership proposal for British Airways with RE-VOLV supporting solar initiatives in underserved communities. Awarded <strong>Certificate of Completion by Bright Network</strong>.</div>
+        </div>
+      </div>
+      <div class="ti reveal">
+        <div class="ty">2023–<br>2024</div>
+        <div>
+          <div class="tr">MBA — Business Administration & Data Analytics <span style="font-size:11px;color:var(--rust);font-family:'Space Mono',monospace;font-style:normal;">· with Commendation</span></div>
+          <div class="to">University of Hertfordshire</div>
+          <div class="td"><strong>MBA with Commendation</strong> · <strong>Top 10%</strong> in Strategic Marketing Planning & Entrepreneurship (78%) · <strong>HBS Excellence Award ×2</strong> · <strong>Dean's Rising Star Award 2024</strong> · <strong>Gold Go Herts Award</strong> · <strong>Student Representative</strong> for MBA cohort · Certificate in Academic English for Business.</div>
+        </div>
+      </div>
+      <div class="ti reveal">
+        <div class="ty">2023–<br>Present</div>
+        <div>
+          <div class="tr">Customer Representative</div>
+          <div class="to">John Lewis Partnership / Waitrose · London</div>
+          <div class="td">Delivered a <strong>75% uplift</strong> in assembly process efficiency through structured workflow improvements. Built resilient, client-facing communication skills in a high-volume service environment.</div>
+        </div>
+      </div>
+      <div class="ti reveal">
+        <div class="ty">2019–<br>2020</div>
+        <div>
+          <div class="tr">Business Development Executive</div>
+          <div class="to">Globus IT Solutions · Hyderabad</div>
+          <div class="td">Managed <strong>government and enterprise stakeholder relationships</strong>, improving engagement by <strong>25%</strong>. Drove <strong>~20% revenue growth</strong> through consultative upselling across a B2B portfolio of ~150 daily client interactions. Delivered IT product and services proposals across public and private sector accounts.</div>
+        </div>
+      </div>
+      <div class="ti reveal">
+        <div class="ty">2014–<br>2019</div>
+        <div>
+          <div class="tr">B.Tech — Computer Science & Engineering</div>
+          <div class="to">GITAM University · Hyderabad</div>
+          <div class="td">Built the technical foundation — computer science, systems thinking, and a deep curiosity about how technology solves real business problems. Led student events for <strong>300+ participants</strong> as Event Coordinator.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS GALLERY -->
+<section class="sec awards-sec" id="awards">
+  <div class="sec-inner">
+    <p class="lbl reveal">Awards & Credentials</p>
+    <div class="awards-grid">
+      <div class="ac reveal">
+        <div class="ai"><img src="Dean_s_Rising_star_Award_page1.png" alt="Dean's Rising Star Award" onerror="this.closest('.ai').style.display='none'"></div>
+        <div class="ab"><div class="an">Dean's Rising Star Award 2024</div><div class="ao">HERTFORDSHIRE BUSINESS SCHOOL</div><div class="ad">3rd December 2024</div></div>
+      </div>
+      <div class="ac reveal">
+        <div class="ai"><img src="graduation.png" alt="MBA Graduation Certificate"></div>
+        <div class="ab"><div class="an">MBA with Commendation — Data Analytics</div><div class="ao">UNIVERSITY OF HERTFORDSHIRE</div><div class="ad">22 October 2024</div></div>
+      </div>
+      <div class="ac reveal">
+        <div class="ai"><img src="internship.jpg" alt="Bright Network Internship Certificate"></div>
+        <div class="ab"><div class="an">IEUK 2024 — Business, Operations & Marketing</div><div class="ao">BRIGHT NETWORK · INTERNSHIP EXPERIENCE UK</div><div class="ad">26th June 2024</div></div>
+      </div>
+      <div class="atc reveal"><div class="ati">⭐</div><div class="atn">HBS Excellence Award ×2</div><div class="ato">HERTFORDSHIRE BUSINESS SCHOOL · Summer Senate · May 2024 · Signed by Deputy Dean Dr Joel Carlton</div></div>
+      <div class="atc reveal"><div class="ati">🏅</div><div class="atn">Gold Go Herts Award</div><div class="ato">UNIVERSITY OF HERTFORDSHIRE · Employability, Enterprise & Social Responsibility · Prof. Quintin McKellar, Vice Chancellor</div></div>
+      <div class="atc reveal"><div class="ati">📊</div><div class="atn">Top 10% of Cohort — Strategic Marketing Planning & Entrepreneurship</div><div class="ato">HERTFORDSHIRE BUSINESS SCHOOL · Mark: 78% · Dr Joel Carlton, Deputy Dean · August 2024</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs-sec">
+  <div class="certs-inner">
+    <p class="lbl reveal">Certifications</p>
+    <div class="certs-flex">
+      <div class="cp reveal"><span class="cpi">🔐</span><div><span class="cpn">Zscaler Certified ZIA Administrator</span><span class="cpo">ZSCALER · Internet Access</span></div></div>
+      <div class="cp reveal"><span class="cpi">🔒</span><div><span class="cpn">Zscaler Certified ZPA Administrator</span><span class="cpo">ZSCALER · Private Access</span></div></div>
+      <div class="cp reveal"><span class="cpi">🛡️</span><div><span class="cpn">Zero Trust Cyber Associate (ZTCA)</span><span class="cpo">ZSCALER · Zero Trust Architecture</span></div></div>
+      <div class="cp reveal"><span class="cpi">🎓</span><div><span class="cpn">Coaching4Impact Certificate</span><span class="cpo">ENACTUS UK & IRELAND · 7-Month Programme · 2025</span></div></div>
+      <div class="cp reveal"><span class="cpi">📚</span><div><span class="cpn">Academic English for Business</span><span class="cpo">HERTFORDSHIRE BUSINESS SCHOOL · CASE · Jan 2024</span></div></div>
+      <div class="cp reveal"><span class="cpi">🗄️</span><div><span class="cpn">MySQL & Oracle Certifications</span><span class="cpo">DATABASE MANAGEMENT</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHT -->
+<div class="hl">
+  <div class="hl-inner reveal">
+    <p class="hl-lbl">Coaching4Impact · Enactus UK & Ireland</p>
+    <p class="hl-q">"Helping develop the next generation of responsible leaders — not as a title, but as something I showed up for every week for seven months."</p>
+    <p class="hl-attr">Sri Anvesh Bikkina · Alumni Mentor & Coach · 2024–Present</p>
+    <div><span class="hl-badge">🎓 &nbsp; Enactus Coaching4Impact Certificate — Awarded 2025</span></div>
+  </div>
+</div>
+
+<!-- CONNECT -->
+<section class="conn" id="connect">
+  <div class="conn-inner">
+    <p class="conn-lbl reveal">Open to opportunities</p>
+    <h2 class="conn-h reveal">Let's<br><em>talk.</em></h2>
+    <p class="conn-sub reveal">Seeking Technical BDR roles in cybersecurity and enterprise technology across the UK. Open to sponsored positions at MNC, mid-size, and high-growth companies.</p>
+    <div class="conn-links reveal">
+      <a href="mailto:anubikkina@gmail.com" class="btn btn-gold">📩 anubikkina@gmail.com</a>
+      <a href="https://www.linkedin.com/in/sri-anvesh-bikkina-93b766151" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+      <a href="tel:+447466299663" class="btn btn-ghost">📞 +44 7466 299 663</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sri Anvesh Bikkina · London, UK</p>
+  <p>MBA · B.Tech CS · Zscaler Certified · Technical Business Development</p>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal,.ti');
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);obs.unobserve(e.target)}
+  });
+},{threshold:.08});
+reveals.forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
